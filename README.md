@@ -40,8 +40,8 @@ npm run build
 ```
 yarn build
 ```
-В данной работе используется MVP-архитектура . С сервера к нам приходят массив объектов(cardList ) и объеукт (cardItem)
-Слой данных (Model) представлен ниже:    
+В данной работе используется MVP-архитектура . С сервера к нам приходят массив объектов(cardList) и объеукт (cardItem)
+## Слой данных (Model) представлен ниже:    
 ICard соситоит из: 
 id:string
 title : string 
@@ -61,29 +61,48 @@ total : number
 selection : string[]
 summPrice:number 
 
-class Card
+
+## Отображение  (View) придставлено ниже :
+class Card extends Component
 будте иметь разметку карточки 
-set id доьавляет id 
-set image добавляет картинку 
-set title добавляет заголовок 
-set descripotion  добавляет контент 
+set id : string  доьавляет id 
+set image : string добавляет картинку 
+set title : string добавляет заголовок 
+set descripotion : string | string[] добавляет контент 
 
-class Basket 
+class Basket extends Component 
 будте иметь разметку корзины 
-set items: добавляет товар 
-set selected: проверяет есть ли в корзине товар 
-set total: добавляет тотал 
-set summPrice: считает общую цену товаров
-Price добавляет: цену 
+set items: HTMLElement[] добавляет товар 
+set selected:  string[] проверяет есть ли в корзине товар 
+set total: number добавляет тотал 
+set summPrice: number считает общую цену товаров
+Price добавляет цену 
 
-class Order
+class Order extends Form
 будте иметь разметку формы  
-set phone: добавляет телефон 
-set email: добавляет емайл 
-set adress: добавляет адресс 
-set way: добавляет способ оплаты 
+set phone: string добавляет телефон 
+set email: string добавляет емайл 
+set adress: string добавляет адресс 
+set way: string добавляет способ оплаты 
 
-Modal 
+## Базовый код 
+
+class Component<T>
+togleClass (element: HTMLElement, className: string, force?: boolean) -  Переключить класс
+setText (element: HTMLElement, value: unknown) - Установить текстовое содержимое
+setDisabled (element: HTMLElement, state: boolean) - Сменить статус блокировки
+setHidden (element: HTMLElement) - Скрыть
+setVisible (element: HTMLElement) Показать
+setImage (element: HTMLImageElement, src: string, alt?: string) Установить изображение с алтернативным текстом
+render (data?: Partial<T>): HTMLElement - Вернуть корневой DOM-элемент
+
+class Form<T> extends Component
+onInputChange(field: keyof T, value: string) Инициировать событие с данными
+set valid : boolean - меняет disabled кнопки  
+set errors : string - устанавливает ошибку
+render - Вернуть корневой DOM-элемент 
+
+Modal extends Component
 имеет общую разметку модального окна 
 имеет общие методы :
 close: открывает окно 
@@ -110,7 +129,7 @@ order:submit
 // Изменилось состояние валидации формы
 formErrors:change
 
-Слой представления (Presenter) представлен ниже : 
+## Слой представления (Presenter) представлен ниже : 
 Мы будем связывать с помощью базового класса EventEmiter 
 Он имеет следующие методы:
 on - устанавливает обработчик события 
