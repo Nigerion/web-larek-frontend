@@ -53,33 +53,42 @@ price : number| null
 discription:string 
 
 IOrder состоит из: 
-email:string
-phone : string 
-adress :string 
+email: string;
+phone: string;
+payment: string;
+address: string;
+total: number;
+items: string[]
 
 IBasket состоит из :
-items:HTMLElement 
-total : number 
-selection : string[]
-summPrice:number 
+items: HTMLElement[];     
+total: number;             
+button: string[];
 
+class OrderEmailPhone
+protected onInputChange: добавляет в массив 
 
+class OrderWayAddress
+protected onInputChange: добавляет в массив 
+
+class AuctionAPI
+getLotItem:получение информации о товаре
+getLotList:оформление заказа
+orderLots:получение списка товаров
+
+class AppState
+getTotal: считает общую сумму заказа
+setCatalog : устанавливает список товара 
+setPreview: устанавливает изображение
+getActiveLots:получение выбранных товаров
+getBasket:дает корзину
+setOrderField:добавляет поле 
+removeOrder:убирает из заказа 
+addingInOrder:Добавляет в заказ
+validateOrderWayAddress: валидирует поля в форме
+validateOrderEmailPhone: валидирует поля в форме
+clearOrder:очищает корзину 
 ## Отображение  (View) придставлено ниже :
-
-class Card extends Component
-будте иметь разметку карточки 
-set id : string  доьавляет id 
-set image : string добавляет картинку 
-set title : string добавляет заголовок 
-set descripotion : string | string[] добавляет контент 
-
-class Basket extends Component 
-будте иметь разметку корзины 
-set items: HTMLElement[] добавляет товар 
-set selected:  string[] проверяет есть ли в корзине товар 
-set total: number добавляет тотал 
-set summPrice: number считает общую цену товаров
-Price добавляет цену 
 
 class Order extends Form
 будте иметь разметку формы  
@@ -88,6 +97,25 @@ set email: string добавляет емайл
 set adress: string добавляет адресс 
 set way: string добавляет способ оплаты 
 
+class CardPreview
+set/get category : устанавливает и возращает категорию
+set image Ж устанавливает изображение
+
+class Page
+counter:обновляет счетчик
+catalog:обновляет каталог
+locked:блокирует прокрутку
+
+сlass CardContainer
+set index : устанавливает порядковый номер товара 
+
+class Success 
+sumPrice: всталяет общую сумму оплаченного заказа
+
+class Basket
+set items : добавляет карточки в корзине 
+set selected:меняте disabled кнопки
+set total : при помощи ф-ии formatNumber число(общую сумму заказа) и вставляет в контейнер
 ## Базовый код 
 
 class Component<T>
@@ -105,33 +133,43 @@ set valid : boolean - меняет disabled кнопки
 set errors : string - устанавливает ошибку
 render - Вернуть корневой DOM-элемент 
 
-Modal extends Component
+class Modal extends Component
 имеет общую разметку модального окна 
 имеет общие методы :
 close: открывает окно 
 open: закрывате окно 
 render: собирает окно  
 
-Model 
+class Model 
 Базовая модель
 emitChanges : cообщить всем что модель поменялась
 
+class Card
+getPrice :
+set/get id : установки и получения значеня id
+set/get title : установки и получения значеня title
+set/get price : установки и получения значеня price
+button : меняет содержинов кнопки 
+
 ## Cобытия  
 
-//Открыть/закрыть карточку
-card:selecte
-// Блокируем прокрутку страницы если открыта модалка 
-modal:open
-//и разблокируем
-modal:close
-// открытие и закрытие корзины 
-basket:open
-// Открыть/закрыть  форму заказа
-order:open
-// Отправлена форма заказа
-order:submit
-// Изменилось состояние валидации формы
-formErrors:change
+card:changed
+card:select
+modal:open(блокирует прокрутку страницы)
+modal:close(разблокирует прокрутку страницы)
+basket:open(открытие корзины)
+orderWayAddress:change(проверка ошибок)
+orderEmailPhone:change(изменение полей)
+orderWayAddress:submit(открытие формы)
+orderEmailPhone:open(открытие формы)
+orderWayAddress:open(открытие формы)
+orderEmailPhonee:change(проверка ошибок)
+card: changes(изменение стьаутса)
+basket: render(отрисовывает корзину)
+card: changeStatus(для изменения статуса)
+basket: remove(очистить корзину)
+preview:changed(bзменен выбранный лот)
+orderEmailPhone:submit(отправление заказа)
 
 ## Слой представления (Presenter) представлен ниже : 
 
@@ -143,10 +181,3 @@ emit - инициировать событие с данными
 onAll - слушать все события 
 offAll - сбрасывет все обработчики событий 
 trigger - генерирует событие при вызове 
-
-Что пользователь может сделать на сайте : 
-1.пользователь может нажать на карточку откроется модальное окно с этой карточкой 
-2.пользователь может нажать на корзину откроется модальное окно корзины ( в которой могут быть товары )
-3.пользователь может закрыть карточку/карзину модальное окно закроется 
-4.пользователь в корзине модет нажать на оформление откроется модальное окно с оформлением заказа 
-5.пользоатель может нажать на далее откроется след. модальное окно для оформления заказа
