@@ -193,9 +193,10 @@ Cобытия  <br>
 `npm format`<br>
 `npm deploy`<br>
 
-# Ссылка на макет
+# Ссылка на макет и GitHub
 [![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](<[https://www.figma.com/file/vIywAvqfkOIRWGOkfOnReY/React-Fullstack_-Проектные-задачи-(3-месяца)_external_link?type=design&node-id=0-1&mode=design](https://www.figma.com/design/50YEgxY8IYDYj7UQu7yChb/Веб-ларёк?node-id=0-1&t=mYtoCS6WspfIqTai-0)>) <br>
-
+GitHub<br>
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Nigerion/mesto-project-ff)<br>
 <!--
 
 https://www.figma.com/design/50YEgxY8IYDYj7UQu7yChb/Веб-ларёк?node-id=0-1&t=mYtoCS6WspfIqTai-0
