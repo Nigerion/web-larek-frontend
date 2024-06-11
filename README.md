@@ -1,4 +1,5 @@
 # Проектная работа "Веб-ларек"
+![image](https://github.com/Nigerion/web-larek-frontend/assets/115921794/9266ed6c-29c0-436c-9a21-c482d8318b00)
 
 Стек: HTML, SCSS, TS, Webpack
 
