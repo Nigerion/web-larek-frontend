@@ -1,5 +1,208 @@
-# Проектная работа "Веб-ларек"
+# Интенрнет-магазин
+# О проекте
+Наш интернет-магазин Web-ларёк предлагает товары для веб-разработчиков. Здесь вы можете просмотреть каталог товаров, добавить их в корзину и оформить заказ. В проекте используется архитектура MVP. Мы получаем с сервера массив объектов cardList и объект cardItem.
 ![image](https://github.com/Nigerion/web-larek-frontend/assets/115921794/9266ed6c-29c0-436c-9a21-c482d8318b00)
+# Структура проекта:
+- src/ — исходные файлы проекта
+- src/components/ — папка с JS компонентами
+- src/components/base/ — папка с базовым кодом
+# Важные файлы:
+- src/pages/index.html — HTML-файл главной страницы
+- src/types/index.ts — файл с типами
+- src/index.ts — точка входа приложения
+- src/styles/styles.scss — корневой файл стилей
+- src/utils/constants.ts — файл с константами
+- src/utils/utils.ts — файл с утилитами
+# Технологии
+HTML, SCSS, TS, Webpack
+# Установка и запуск
+Для установки и запуска проекта необходимо выполнить команды
+
+```
+npm install
+npm run start
+```
+
+или
+
+```
+yarn
+yarn start
+```
+## Сборка
+
+```
+npm run build
+```
+
+или
+
+```
+yarn build
+```
+# Что было сделано
+## Слой данных (Model) представлен ниже:  
+  
+ICard соситоит из: <br>
+- `id`- имеет тип string<br>
+- `title`- имеет тип string <br>
+- `image` - имеет типstring<br>
+- `category` - имеет тип string <br>
+- `price` - имеет тип number| null <br>
+- `discription` - имеет тип string <br>
+
+IOrder состоит из: <br>
+- `email`- имеет тип string;<br>
+- `phone`- имеет тип string;<br>
+- `payment`- имеет тип string;<br>
+- `address`- имеет тип string;<br>
+- `total`- имеет тип number;<br>
+- `items`- имеет тип string[]<br>
+
+IBasket состоит из :<br>
+- `items`- имеет тип HTMLElement[];   <br>  
+- `total`- имеет тип number;          <br>   
+- `button`- имеет тип string[];<br>
+
+class OrderEmailPhone<br>
+- `protected onInputChange` - используется для добавления элемента в массив <br>
+
+class OrderWayAddress<br>
+- `protected onInputChange` - используется для добавления элемента в массив  <br>
+
+class AuctionAPI<br>
+- `getLotItem` - используется для получение информации о товаре<br>
+- `getLotList` - используется для оформления заказа<br>
+- `orderLots` - используется для получение списка товаров<br>
+
+class AppState<br>
+- `getTotal`- используется для расчета общей сумму заказа<br>
+- `setCatalog` - используется для установки списока товара <br>
+- `setPreview`- используется для устанавки изображения<br>
+- `getActiveLots`- используется для получения выбранных товаров<br>
+- `getBasket`-используется для порлучения корзины<br>
+- `setOrderField`- используется для добавляения поля <br>
+- `removeOrder`- используется для того ,чтобы убрать из заказа <br>
+- `addingInOrder`- используется для добавления в заказ<br>
+- `validateOrderWayAddress`-  используется для валидации поля в форме<br>
+- `validateOrderEmailPhone`-  используется для валидациит поля в форме<br>
+- `clearOrder`- очищает корзину <br>
+
+## Отображение  (View) придставлено ниже :<br>
+
+class Order extends Form<br>
+будте иметь разметку формы  <br>
+- `set phone` - имеет тип string, используется для добавления телефона <br>
+- `set email`- имеет тип string, используется для добавления емайла <br>
+- `set adress` - имеет тип string, используется для добавления адресса <br>
+- `set way` - имеет тип string, используется для добавления способа оплаты <br>
+
+class CardPreview<br>
+- `set/get category` - используется для устанавлки и возращения категории<br>
+- `set image` - используется для устанавки изображения<br>
+
+class Page<br>
+- `counter`- используется для обновления счетчика<br>
+- `catalog`- используется для обновления каталога<br>
+- `locked`- используется для блокировки прокрутки<br>
+
+сlass CardContainer<br>
+- `set index` - используется для устанавки порядкового номера товара <br>
+
+class Success <br>
+- `sumPrice`- используется для того чтбы вставить общую сумму оплаченного заказа<br>
+
+class Basket<br>
+- `set items` - используется для добавления карточки в корзине <br>
+- `set selected`- используется для изменения disabled кнопки<br>
+- `set total` - используется при помощи функции formatNumber число(общую сумму заказа) и вставляет в контейнер<br>
+## Базовый код <br>
+
+class Component<T><br>
+- `togleClass (element: HTMLElement, className: string, force?: boolean)` - используется для переключения класса<br>
+- `setText (element: HTMLElement, value: unknown)` используется для становки текстового содержимого<br>
+- `setDisabled (element: HTMLElement, state: boolean)` используется для смены статуса блокировки<br>
+- `setHidden (element: HTMLElement)` используется для скрытия <br>
+- `setVisible (element: HTMLElement)` используется для показателя<br>
+- `setImage (element: HTMLImageElement, src: string, alt?: string)`- используется для установки изображения с алтернативным текстом<br>
+- `render (data?: Partial<T>)` : HTMLElement - используется для возврата корневого DOM-элемента<br>
+
+class Form<T> extends Component<br>
+- `onInputChange(field: keyof T, value: string)` - используется для инициирования события с данными<br>
+- `set valid`- имеет тип boolean, используется для изменения disabled кнопки  <br>
+- `set errors`- имеет тип string, используется для устанавки ошибки<br>
+- `render` - используется для возврата корневого DOM-элемента <br>
+<br>
+class Modal extends Component<br>
+имеет общую разметку модального окна <br>
+имеет общие методы :<br>
+
+- `close` - используется для открытия окна <br>
+- `open`- используется для закрытия окна <br>
+- `render`- используется для сбора окна  <br>
+
+class Model <br>
+Базовая модель<br>
+- `emitChanges` -используется длятого, чтобы cообщить всем что модель поменялась<br>
+
+class Card<br>
+- `getPrice` :<br>
+- `set/get id` - используется для установки и получения значеня id<br>
+- `set/get title` - используется для установки и получения значеня title<br>
+- `set/get price` - используется для установки и получения значеня price<br>
+- `button ` - используется для изменения содержимого кнопки <br>
+
+## Cобытия  <br>
+
+- `card:changed`<br>
+- `card:select`<br>
+- `modal:open` - данное событие блокирует прокрутку страницы<br>
+- `modal:close`- данное событие разблокирует прокрутку страницы<br>
+- `basket:open`- данное событие при открытие корзины<br>
+- `orderWayAddress:change`- данное событие при проверки ошибок<br>
+- `orderEmailPhone:change`- данное событие при изменение полей<br>
+- `orderWayAddress:submit`- данное событие при открытие формы<br>
+- `orderEmailPhone:open`- данное событие при открытие формы<br>
+- `orderWayAddress:open`- данное событие при открытие формы<br>
+- `orderEmailPhonee:change`- данное событие при проверке ошибок<br>
+- `card: changes`- данное событие при изменение статуса<br>
+- `basket: render`- данное событие при отрисовывание корзины<br>
+- `card: changeStatus`- данное событие для изменения статуса)<br>
+- `basket: remove`- данное событие при очистке корзины<br>
+- `preview:changed`- данное событие при изменение выбранный лотов<br>
+- `orderEmailPhone:submit`- данное событие при отправление заказа<br>
+
+## Слой представления (Presenter) представлен ниже : <br>
+
+Мы будем связывать с помощью базового класса EventEmiter <br>
+Он имеет следующие методы:<br>
+- `on` - используется для устанавки обработчика события <br>
+- `of` - используется для снятия обработчика события <br>
+- `emit` - используется для того ,чтобы инициировать событие с данными <br>
+- `onAll` - используется для прослушивания всего события <br>
+- `offAll` - используется для сбрасывания всеч обработчиков событий <br>
+- `trigger` - используется для генерациит события при вызове <br>
+# Доступные скрипты<br>
+`npm build`<br>
+`npm build:dev`<br>
+`npm build:prod`<br>
+`npm watch`<br>
+`npm start`<br>
+`npm lint`<br>
+`npm lint:fix`<br>
+`npm format`<br>
+`npm deploy`<br>
+
+# Ссылка на макет
+[![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](<[https://www.figma.com/file/vIywAvqfkOIRWGOkfOnReY/React-Fullstack_-Проектные-задачи-(3-месяца)_external_link?type=design&node-id=0-1&mode=design](https://www.figma.com/design/50YEgxY8IYDYj7UQu7yChb/Веб-ларёк?node-id=0-1&t=mYtoCS6WspfIqTai-0)>) <br>
+
+<!--
+
+https://www.figma.com/design/50YEgxY8IYDYj7UQu7yChb/Веб-ларёк?node-id=0-1&t=mYtoCS6WspfIqTai-0
+
+
+
+
 
 Стек: HTML, SCSS, TS, Webpack
 
@@ -182,3 +385,9 @@ emit - инициировать событие с данными
 onAll - слушать все события 
 offAll - сбрасывет все обработчики событий 
 trigger - генерирует событие при вызове 
+
+
+-->
+
+
+
