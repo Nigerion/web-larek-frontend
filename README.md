@@ -41,7 +41,7 @@ npm run build
 yarn build
 ```
 # Что было сделано
-## Слой данных (Model) представлен ниже:  
+ Слой данных (Model) представлен ниже:  <br> 
   
 ICard соситоит из: <br>
 - `id`- имеет тип string<br>
@@ -88,7 +88,7 @@ class AppState<br>
 - `validateOrderEmailPhone`-  используется для валидациит поля в форме<br>
 - `clearOrder`- очищает корзину <br>
 
-## Отображение  (View) придставлено ниже :<br>
+ Отображение  (View) придставлено ниже :<br>
 
 class Order extends Form<br>
 будте иметь разметку формы  <br>
@@ -116,7 +116,7 @@ class Basket<br>
 - `set items` - используется для добавления карточки в корзине <br>
 - `set selected`- используется для изменения disabled кнопки<br>
 - `set total` - используется при помощи функции formatNumber число(общую сумму заказа) и вставляет в контейнер<br>
-## Базовый код <br>
+Базовый код <br>
 
 class Component<T><br>
 - `togleClass (element: HTMLElement, className: string, force?: boolean)` - используется для переключения класса<br>
@@ -152,7 +152,7 @@ class Card<br>
 - `set/get price` - используется для установки и получения значеня price<br>
 - `button ` - используется для изменения содержимого кнопки <br>
 
-## Cобытия  <br>
+Cобытия  <br>
 
 - `card:changed`<br>
 - `card:select`<br>
@@ -172,7 +172,7 @@ class Card<br>
 - `preview:changed`- данное событие при изменение выбранный лотов<br>
 - `orderEmailPhone:submit`- данное событие при отправление заказа<br>
 
-## Слой представления (Presenter) представлен ниже : <br>
+Слой представления (Presenter) представлен ниже : <br>
 
 Мы будем связывать с помощью базового класса EventEmiter <br>
 Он имеет следующие методы:<br>
