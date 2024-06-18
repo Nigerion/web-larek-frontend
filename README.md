@@ -175,15 +175,17 @@ yarn build
 ## Статус проекта
 
 ## Доступные скрипты<br>
-`npm build`<br>
-`npm build:dev`<br>
-`npm build:prod`<br>
-`npm watch`<br>
-`npm start`<br>
-`npm lint`<br>
-`npm lint:fix`<br>
-`npm format`<br>
-`npm deploy`<br>
+```
+npm build
+npm build:dev
+npm build:prod
+npm watch
+npm start
+npm lint
+npm lint:fix
+npm format
+npm deploy
+```
 
 ## Ссылка на макет и GitHub
 [![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)](<[https://www.figma.com/file/vIywAvqfkOIRWGOkfOnReY/React-Fullstack_-Проектные-задачи-(3-месяца)_external_link?type=design&node-id=0-1&mode=design](https://www.figma.com/design/50YEgxY8IYDYj7UQu7yChb/Веб-ларёк?node-id=0-1&t=mYtoCS6WspfIqTai-0)>) <br>
@@ -200,7 +202,7 @@ GitHub<br>
 
 
 
-
+<!--
 ##
 
 # Интенрнет-магазин
